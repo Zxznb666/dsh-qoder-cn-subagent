@@ -1,0 +1,14 @@
+# 注册 Qoder CN 子智能体后端，并配一个只用它的委派工具。
+# 原有的 subagent（本地 spawn）不受影响：两个工具并存，模型按任务选择。
+#
+# maxDepth 必须是 'provider-managed'：外部后端没有 depthLimit 能力，父级无法替它
+# 执行递归预算，如实转交比伪装成能限制更安全。
+- insert:
+    - id: subagent-qoder-cn
+      name: dsh-qoder-cn-subagent
+    - id: tool-subagent-qoder-cn
+      name: "@deepseek-ai/dsh-tool-subagent"
+      config:
+        provider: qoder-cn
+        toolName: qoder_subagent
+        maxDepth: provider-managed

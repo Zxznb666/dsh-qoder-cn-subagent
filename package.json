@@ -1,0 +1,51 @@
+{
+  "name": "dsh-qoder-cn-subagent",
+  "displayName": "DSH Qoder CN Subagent",
+  "description": "把 Qoder CN 注册为 DeepSeek Harness 的子智能体后端：复用 Qoder CN 原生登录与设置，一次委派一个任务。",
+  "version": "0.1.0",
+  "keywords": [
+    "dsh-plugin",
+    "deepseek-harness",
+    "deepseek",
+    "qoder",
+    "qoder-cn",
+    "subagent"
+  ],
+  "type": "module",
+  "engines": {
+    "node": "^22.19.0 || >=24.0.0"
+  },
+  "main": "lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./cordis.patch.yml": "./cordis.patch.yml",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib",
+    "cordis.patch.yml",
+    "README.md"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Zxznb666/dsh-qoder-cn-subagent.git"
+  },
+  "homepage": "https://github.com/Zxznb666/dsh-qoder-cn-subagent#readme",
+  "bugs": {
+    "url": "https://github.com/Zxznb666/dsh-qoder-cn-subagent/issues"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  },
+  "dependencies": {
+    "@qodercn-ai/qodercn-agent-sdk": "^1.0.55"
+  },
+  "peerDependencies": {
+    "@deepseek-ai/cordis": "^4.0.5",
+    "@deepseek-ai/dsh-subagent": "0.2.1-rc.2",
+    "@deepseek-ai/schemastery": "^3.18.5"
+  }
+}
