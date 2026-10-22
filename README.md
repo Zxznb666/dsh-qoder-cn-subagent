@@ -49,11 +49,15 @@ Run `qoderclicn login` once (or set accessToken / accessTokenEnv) before delegat
 插件本身不发 npm，按本地包安装：
 
 ```sh
-# 1) 构建目录里装好官方 SDK（插件已声明依赖，这一步是可选的预装）
-cd /path/to/dsh-qoder-cn-subagent
+# 1) 取回源码
+git clone https://github.com/Zxznb666/dsh-qoder-cn-subagent.git
+cd dsh-qoder-cn-subagent
 
-# 2) 装进你要用的 profile
-dsh plugin --profile <profile> add file:/path/to/dsh-qoder-cn-subagent
+# 2) 装好官方 SDK（插件已声明依赖，这一步是可选的预装）
+npm install
+
+# 3) 装进你要用的 profile（file: 需要绝对路径）
+dsh plugin --profile <profile> add "file:$(pwd)"
 ```
 
 > **Desktop 用户注意**：官方 Electron 版把 `desktop` profile 交给 App 独占管理，独立 CLI 的 `--profile desktop` 会被拒绝，`dsh plugin --profile desktop ...` 同样不可用。想在 Desktop 里用，走 App 的插件入口安装本地包；Web / TUI / headless 用上面的命令即可。
